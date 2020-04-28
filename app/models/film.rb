@@ -3,4 +3,8 @@ class Film < ApplicationRecord
 
   validates :title, presence: true
   validates :genre, presence: true
+
+  def avg_rating
+    reviews.average(:rate)
+  end
 end

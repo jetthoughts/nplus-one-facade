@@ -1,0 +1,38 @@
+review_season_of_the_fake_blow_1:
+  film: season_of_the_fake_blow
+  rate: 44
+
+review_season_of_the_fake_blow_2:
+  film: season_of_the_fake_blow
+  rate: 26
+
+review_blonde_mutant_1:
+  film: blonde_mutant
+  rate: 66
+
+review_blonde_mutant_2:
+  film: blonde_mutant
+  rate: 99
+
+review_the_danger_women_that_came_to_dinner_1:
+  film: the_danger_women_that_came_to_dinner
+  rate: 14
+
+review_the_danger_women_that_came_to_dinner_2:
+  film: the_danger_women_that_came_to_dinner
+  rate: 84
+
+review_the_danger_women_that_came_to_dinner_3:
+  film: the_danger_women_that_came_to_dinner
+  rate: 94
+
+review_the_ultra_demon_from_hell_1:
+  film: the_ultra_demon_from_hell
+  rate: 99
+review_the_ultra_demon_from_hell_2:
+  film: the_ultra_demon_from_hell
+  rate: 91
+
+review_hungry_wolves_1:
+  film: hungry_wolves
+  rate: 91
