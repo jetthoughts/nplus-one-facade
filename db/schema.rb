@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_072359) do
+ActiveRecord::Schema.define(version: 2020_04_28_142136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,4 +31,12 @@ ActiveRecord::Schema.define(version: 2020_04_28_072359) do
     t.index ["film_id"], name: "index_reviews_on_film_id"
   end
 
+
+  create_view "avg_ratings", materialized: true, sql_definition: <<-SQL
+      SELECT avg(reviews.rate) AS avg,
+      films.id
+     FROM (reviews
+       JOIN films ON ((reviews.film_id = films.id)))
+    GROUP BY films.id;
+  SQL
 end
