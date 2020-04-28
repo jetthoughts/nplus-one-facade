@@ -5,4 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-100.times { |n| Film.create(title: "#{n}-title", genre: "#{n}-genre") }
+100.times do |n|
+  film = Film.create(title: "#{n}-title", genre: "#{n}-genre")
+  10.times { |i| Review.create(comment: "#{i} comment", rate: rand(100), film_id: film.id) }
+end
