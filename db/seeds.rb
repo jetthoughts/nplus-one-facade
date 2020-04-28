@@ -5,7 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+genres = []
+10.times { |i| genres << FFaker::Book.genre }
+
 100.times do |n|
-  film = Film.create(title: "#{n}-title", genre: "#{n}-genre")
-  10.times { |i| Review.create(comment: "#{i} comment", rate: rand(100), film_id: film.id) }
+  film = Film.create(title: FFaker::Movie.title, genre: genres.sample )
+  10.times { |i| Review.create(comment: FFaker::Lorem.sentence, rate: rand(100), film_id: film.id) }
 end
