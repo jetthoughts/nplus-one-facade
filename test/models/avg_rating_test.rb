@@ -4,8 +4,6 @@ require 'test_helper'
 
 class AvgRatingTest < ActiveSupport::TestCase
   test 'store the rating with related film id' do
-    AvgRating.refresh
-
     films_with_avg_rates = Film.all.sort_by(&:id).map do |film|
       { film.id => rates_amount(film) / film.reviews.count.to_f }
     end

@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_142136) do
   end
 
 
-  create_view "avg_ratings", materialized: true, sql_definition: <<-SQL
+  create_view "avg_ratings", sql_definition: <<-SQL
       SELECT avg(reviews.rate) AS avg,
       films.id
      FROM (reviews
