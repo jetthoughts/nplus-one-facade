@@ -10,7 +10,7 @@ class FilmsController < ApplicationController
       {
         title: film.title,
         genre: film.genre,
-        rate: film.reviews.average(:rate)
+        rate:  film.reviews.average(:rate)
       }
     end
   end
