@@ -6,11 +6,11 @@ class FilmsController < ApplicationController
   end
 
   def scope
-    Film.all.map do |film|
+    FilmCarrier.wrap(Film.all).map do |film|
       {
         title: film.title,
         genre: film.genre,
-        rate:  film.reviews.average(:rate)
+        rate:  film.avg_rating
       }
     end
   end
