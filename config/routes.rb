@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   namespace :sql_view, defaults: { format: :json }, constraints: { format: 'json' } do
     get :films, to: 'films#index'
   end
+
+  namespace :facade, defaults: { format: :json }, constraints: { format: 'json' } do
+    get :films, to: 'films#index'
+  end
 end
