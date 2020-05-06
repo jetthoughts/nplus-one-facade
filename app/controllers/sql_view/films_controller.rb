@@ -9,9 +9,9 @@ module SqlView
     def scope
       AvgRating.all.map do |avg_rating|
         {
-          title: avg_rating.title,
-          genre: avg_rating.genre,
-          rate:  avg_rating.avg
+          title: avg_rating.film_title,
+          genre: avg_rating.film_genre,
+          rate:  avg_rating.avg_rate
         }
       end
     end
