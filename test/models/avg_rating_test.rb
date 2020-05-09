@@ -9,6 +9,7 @@ class AvgRatingTest < ActiveSupport::TestCase
     films_with_avg_rates = Film.all.sort_by(&:id).map do |film|
       { film.id => rates_amount(film) / film.reviews.count.to_f }
     end
+
     avg_ratings_films_with_rates = AvgRating.all.sort_by(&:film_id).map do |avg_rating|
       { avg_rating.film_id => avg_rating.avg_rate.to_f }
     end

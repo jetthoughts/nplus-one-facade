@@ -13,26 +13,16 @@ class FilmCarrier
   end
 
   def self.wrap(film_scope)
-    films = film_scope.to_a
+    cache = { avg_ratings: calculate_totals(film_scope) }
 
-    cache = {
-      avg_ratings: calculate_totals(films),
-    }
-
-    films.map { |film| FilmCarrier.new(film, cached_stats: cache) }
+    film_scope.map { |film| FilmCarrier.new(film, cached_stats: cache) }
   end
 
-
   def self.calculate_totals(films)
-    Review
-      .where(film_id: films.pluck(:id))
-      .group(:film_id)
-      .average(:rate)
+    films.includes(:reviews).group(:film_id).average(:rate)
   end
 
   def calculate_stats(film)
-    {
-      avg_ratings: { film.id => film.avg_rating }
-    }
+    { avg_ratings: { film.id => film.avg_rating } }
   end
 end

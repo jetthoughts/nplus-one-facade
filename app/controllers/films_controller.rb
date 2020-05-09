@@ -2,15 +2,16 @@
 
 class FilmsController < ApplicationController
   def index
-    render json: scope
+    @films = serialized_films
+    render json: @films
   end
 
-  def scope
+  def serialized_films
     Film.all.map do |film|
       {
         title: film.title,
         genre: film.genre,
-        rate:  film.reviews.average(:rate)
+        rate: film.reviews.average(:rate)
       }
     end
   end
