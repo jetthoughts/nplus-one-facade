@@ -7,13 +7,15 @@ module Facade
       render json: @films
     end
 
+    private
+
+    def films_scope
+      Film.all
+    end
+
     def serialized_films
-      FilmCarrier.wrap(Film.all).map do |film|
-        {
-          title: film.title,
-          genre: film.genre,
-          rate: film.avg_rating
-        }
+      FilmCarrier.wrap(films_scope).map do |film|
+        { title: film.title, genre: film.genre, rate: film.avg_rating }
       end
     end
   end
