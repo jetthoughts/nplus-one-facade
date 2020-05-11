@@ -2,23 +2,18 @@
 
 class FilmsController < ApplicationController
   def index
-    @films = serialized_films
-    render json: @films
+    render json: find_films
   end
 
   private
 
-  def films_scope
-    Film.all
-  end
-
-  def serialized_films
-    films_scope.map do |film|
-      { title: film.title, genre: film.genre, rate: films_rates[film.id] }
+  def find_films
+    Film.all.map do |film|
+      {
+        title: film.title,
+        genre: film.genre,
+        rate:  film.reviews.average(:rate)
+      }
     end
-  end
-
-  def films_rates
-    @films_rates ||= films_scope.includes(:reviews).group(:film_id).average(:rate)
   end
 end
