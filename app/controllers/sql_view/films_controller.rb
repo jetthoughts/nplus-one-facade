@@ -9,7 +9,9 @@ module SqlView
     private
 
     def find_films
-      AvgRating.select(:film_title, :film_genre, :avg_rate).as_json(except: :id)
+      FilmRating
+        .select(:title, :genre, :rate)
+        .as_json(except: :id)
     end
   end
 end

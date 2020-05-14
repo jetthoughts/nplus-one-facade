@@ -1,4 +1,4 @@
-class AvgRating < ApplicationRecord
+class FilmRating < ApplicationRecord
   self.primary_key = :id
 
   def self.refresh

@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 2020_04_28_142136) do
   end
 
 
-  create_view "avg_ratings", materialized: true, sql_definition: <<-SQL
+  create_view "film_ratings", materialized: true, sql_definition: <<-SQL
       SELECT row_number() OVER () AS id,
-      avg(reviews.rate) AS avg_rate,
+      avg(reviews.rate) AS rate,
       films.id AS film_id,
-      films.title AS film_title,
-      films.genre AS film_genre
+      films.title,
+      films.genre
      FROM (reviews
        RIGHT JOIN films ON ((reviews.film_id = films.id)))
     GROUP BY films.id;
