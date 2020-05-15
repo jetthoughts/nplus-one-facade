@@ -4,5 +4,5 @@ Films.id AS film_id,
 Films.title AS title,
 Films.genre AS genre
 FROM Films
-RIGHT OUTER JOIN Reviews ON Reviews.film_id=Films.id
+LEFT OUTER JOIN Reviews ON Reviews.film_id=Films.id
 GROUP BY Films.id;

@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2020_04_28_142136) do
       films.id AS film_id,
       films.title,
       films.genre
-     FROM (reviews
-       RIGHT JOIN films ON ((reviews.film_id = films.id)))
+     FROM (films
+       LEFT JOIN reviews ON ((reviews.film_id = films.id)))
     GROUP BY films.id;
   SQL
 end
